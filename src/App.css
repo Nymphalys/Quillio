@@ -1,0 +1,11 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial Black', Arial, sans-serif;
+  color: black;
+  background-color: white;
+  overflow-x: hidden;
+  padding:0px 0 50px 50px;
+ 
+}
+

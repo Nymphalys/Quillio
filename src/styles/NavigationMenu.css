@@ -1,0 +1,79 @@
+.nav-menu {
+    flex: 1;
+    padding: 50px 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 350px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    font-family: "Bodoni Moda SC", serif;
+    font-weight: 400;
+    font-size: 28px;
+  }
+  
+  /* .user-icon {
+    font-size: 24px;
+    cursor: pointer;
+  } */
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav li {
+    margin: 10px 0;
+    font-size: 25px;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+  }
+  
+  .menu-link {
+    font-weight: normal;
+  }
+  
+  /* .podcast {
+    color: #F5B800; 
+    text-decoration: underline;
+  } */
+  
+  /* Home image styles */
+  .home-image-container {
+    position: relative;
+    margin-top: 40px;
+  }
+  
+  .home-image {
+    width: 100%;
+    border-radius: 2px;
+    filter: grayscale(50%);
+  }
+  
+  .image-date {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .nav-menu nav li h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
+    font-size: 50px;
+}
+
+.nav-menu nav li .menu-link{
+  font-family: "Bodoni Moda SC", serif;
+}
