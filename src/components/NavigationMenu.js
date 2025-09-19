@@ -5,6 +5,15 @@ import month2 from "./../assets/images/month2.jpeg";
 function NavigationMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Get current month and year
+  const date = new Date();
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const currentMonth = monthNames[date.getMonth()];
+  const currentYear = date.getFullYear();
+
   return (
     <aside className={`nav-menu ${menuOpen ? 'open' : ''}`}>
       <div className="header">
@@ -38,7 +47,7 @@ function NavigationMenu() {
           alt="Home Book" 
           className="home-image"
         />
-        <div className="image-date">June 2022</div>
+        <div className="image-date">{currentMonth} {currentYear}</div>
       </div>
     </aside>
   );
