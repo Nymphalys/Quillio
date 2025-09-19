@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
 import './../styles/NavigationMenu.css';
 import month2 from "./../assets/images/month2.jpeg";
-
+import accountlogo from "./../assets/images/account.png"
 function NavigationMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Get current month and year
   const date = new Date();
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  const currentMonth = monthNames[date.getMonth()];
+  const currentMonth = date.toLocaleString("default", { month: "long" });
   const currentYear = date.getFullYear();
 
   return (
     <aside className={`nav-menu ${menuOpen ? 'open' : ''}`}>
       <div className="header">
-        <h1 className="logo">QUILLIO</h1>
-
-        {/* Hamburger only visible on mobile */}
+        {/* Hamburger on left */}
         <div 
           className="hamburger" 
           onClick={() => setMenuOpen(!menuOpen)}
@@ -27,6 +20,17 @@ function NavigationMenu() {
           <span></span>
           <span></span>
           <span></span>
+        </div>
+
+        {/* Logo center */}
+        <h1 className="logo">QUILLIO</h1>
+
+        {/* Account Icon on right */}
+        <div className="account-icon">
+          <img 
+            src={accountlogo}          
+          >
+          </img>
         </div>
       </div>
 

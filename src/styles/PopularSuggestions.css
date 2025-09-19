@@ -159,3 +159,21 @@
     background-position: center;
   }
 }
+
+
+
+/* Account icon */
+.account-icon {
+  position: absolute;
+  right: 20px; /* sticks to the right */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.account-icon svg {
+  width: 28px;
+  height: 28px;
+  color: #000;
+}
+
