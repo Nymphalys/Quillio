@@ -1,11 +1,33 @@
+/* App.css or global.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #000;
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .app-container {
   display: flex;
-  height: 100vh;
-  font-family: 'Arial Black', Arial, sans-serif;
-  color: black;
-  background-color: white;
-  overflow-x: hidden;
-  padding:0px 0 50px 50px;
- 
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
 }
+
 

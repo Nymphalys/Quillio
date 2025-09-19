@@ -1,75 +1,141 @@
-/* Shared card container */
+/* ---------- FeaturedArticles.css ---------- */
+
+/* Outer container */
+.featured-articles {
+  flex: 1;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;      /* lock column to screen */
+  overflow: hidden;
+  margin: 0 10px;
+  min-width: 260px;
+  box-sizing: border-box;
+}
+
+/* Inner strip (duplicated in JSX) */
+.featured-articles-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: scrollUp 20s linear infinite;
+  will-change: transform;
+}
+
+/* Vertical auto-scroll (desktop) */
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* -50% because of duplication */
+}
+
+/* ---------- Shared card styles ---------- */
 .featured-articles-inner > * {
-  padding: 18px;
+  padding: 12px 15px;
   box-sizing: border-box;
   background: transparent;
-  border: none;
-  font-weight: bolder;
-  position: relative; /* for arrow positioning */
+  border: 1px solid transparent; /* safety for layout debug */
 }
 
-/* Article titles/headings */
-.article-title-large h3,
-.article-title-large h2,
-.article-highlight div {
-  font-family: "Anybody", Helvetica, sans-serif;
-  font-weight: 900;          /* true heavy weight */
+.article-title-large h2 {
+  font-weight: 900;
   font-size: 22px;
-  line-height: 1.2;
-  color: #000;
+  margin-bottom: 6px;
 }
 
-/* Optional: fake extra weight if font doesn't load */
-.article-title-large h3,
-.article-title-large h2,
-.article-highlight div {
-  -webkit-text-stroke: 0.2px #000;  /* makes it look thicker */
+.article-title-large p,
+.article-highlight p {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 13px;
+  color: #444;
 }
 
-/* Article highlight (yellow) */
 .article-highlight {
   background-color: #F5B800;
   color: #fff;
-  border-radius: 0;
+  padding: 12px;
 }
 
-.article-highlight div {
-  color: #fff;  /* text on yellow */
-  -webkit-text-stroke: 0.2px #fff;
-}
-
-/* Tag = pill */
 .tag {
   display: inline-block;
   background: #000;
   color: #fff;
-  padding: 3px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  flex: 0 0 auto;
-  width: fit-content;
-  white-space: nowrap;
+  padding: 2px 6px;
+  font-size: 10px;
+  flex: 0 0 auto;       /* don’t let it stretch */
+  width: fit-content;   /* size exactly to text */
+  max-width: 100%;      /* avoid overflow */
+  white-space: nowrap; 
 }
 
-/* Arrow button */
 .read-arrow {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 1.5px dashed #000;
-  font-size: 16px;
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  background: #fff;
+  border: 1.5px dashed #444;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-.article-highlight .read-arrow {
-  border-color: #fff;
-  background: transparent;
+
+/* ---------- Mobile: horizontal auto-scroll ---------- */
+@media (max-width: 768px) {
+  .featured-articles {
+    height: 336.6px;           /* give more space so nothing cuts off */
+    margin: 10px 0;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .featured-articles-inner {
+    flex-direction: row;   /* horizontal layout */
+    gap: 14px;
+    align-items: stretch;
+    animation: scrollLeft 20s linear infinite;
+  }
+
+  .featured-articles-inner > * {
+    flex: 0 0 280px;       /* slightly wider cards */
+    min-width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* allow content to flow naturally */
+    overflow: hidden;
+  }
+
+  /* Title + highlight should not be squashed */
+  .article-title-large,
+  .article-highlight {
+    flex: 1; /* take available height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* keep arrow visible at bottom */
+  .read-arrow {
+    margin-top: auto; /* pushes it to bottom */
+  }
+
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Pause animation on hover/touch */
+  .featured-articles-inner:hover,
+  .featured-articles-inner:focus-within {
+    animation-play-state: paused;
+  }
+
+  /* Hide native scrollbars */
+  .featured-articles::-webkit-scrollbar { display: none; }
+  .featured-articles { -ms-overflow-style: none; scrollbar-width: none; }
 }
