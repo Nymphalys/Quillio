@@ -1,79 +1,136 @@
-.nav-menu {
-    flex: 1;
-    padding: 50px 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    max-width: 350px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .logo {
-    font-family: "Bodoni Moda SC", serif;
-    font-weight: 400;
-    font-size: 28px;
-  }
-  
-  /* .user-icon {
-    font-size: 24px;
-    cursor: pointer;
-  } */
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  nav li {
-    margin: 10px 0;
-    font-size: 25px;
-    cursor: pointer;
-    border-bottom: 1px solid black;
-    padding-bottom: 8px;
-  }
-  
-  .menu-link {
-    font-weight: normal;
-  }
-  
-  /* .podcast {
-    color: #F5B800; 
-    text-decoration: underline;
-  } */
-  
-  /* Home image styles */
-  .home-image-container {
-    position: relative;
-    margin-top: 40px;
-  }
-  
-  .home-image {
-    width: 100%;
-    border-radius: 2px;
-    filter: grayscale(50%);
-  }
-  
-  .image-date {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-  }
-
-  .nav-menu nav li h2 {
-    font-family: 'Anton', sans-serif;
-    font-weight: normal;
-    font-size: 50px;
+/* Wrapper for sidebar + main content */
+.nav-wrapper {
+  display: flex;
 }
 
-.nav-menu nav li .menu-link{
+/* Sidebar */
+.nav-menu {
+  flex: 0 0 250px; /* desktop width */
+  padding: 20px;
+  border-right: 1px solid #000000;
+  transition: all 0.3s ease;
+}
+
+.nav-menu .logo {
   font-family: "Bodoni Moda SC", serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+/* Links */
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-links li {
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5px;
+  cursor: pointer;
+  font-family: Bodoni Moda SC, serif;
+}
+
+/* Home image */
+.home-image-container {
+  margin-top: 30px;
+  position: relative;
+}
+
+.home-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-date {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  transition: 0.3s;
+}
+
+/* Hamburger animation */
+.nav-menu.open .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-menu.open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.nav-menu.open .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile: top nav + collapsible menu */
+@media (max-width: 768px) {
+  .nav-wrapper {
+    flex-direction: column;
+  }
+
+  .nav-menu {
+    flex: 1 1 100%;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    padding: 10px 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.active {
+    max-height: 300px; /* adjust as needed */
+    
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+    color: #000000;
+    font-family: "Anton-Regular", Helvetica; 
+  }
+
+  .home-image-container {
+    margin-top: 10px;
+  }
+}
+
+.nav-links li:first-child {
+  font-family: "Anton",sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  font-style: normal;
 }

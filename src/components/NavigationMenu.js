@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './../styles/NavigationMenu.css';
 import month2 from "./../assets/images/month2.jpeg";
 
 function NavigationMenu() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <aside className="nav-menu">
+    <aside className={`nav-menu ${menuOpen ? 'open' : ''}`}>
       <div className="header">
         <h1 className="logo">QUILLIO</h1>
-        <div className="user-icon"></div>
+
+        {/* Hamburger only visible on mobile */}
+        <div 
+          className="hamburger" 
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
 
-      <nav>
+      <nav className={`nav-links ${menuOpen ? 'active' : ''}`}>
         <ul>
-          <li><h2>HOME</h2></li>
-          <li><span className="menu-link">BLOGS</span></li>
-          <li><span className="menu-link podcast">PODCAST</span></li>
-          <li><span className="menu-link">BOOK SHELF</span></li>
-          <li><span className="menu-link">ARCHIVE</span></li>
-          <li><span className="menu-link">ABOUT US</span></li>
+          <li>HOME</li>
+          <li>BLOGS</li>
+          <li>PODCAST</li>
+          <li>BOOK SHELF</li>
+          <li>ARCHIVE</li>
+          <li>ABOUT US</li>
         </ul>
       </nav>
 
@@ -30,7 +41,7 @@ function NavigationMenu() {
         <div className="image-date">June 2022</div>
       </div>
     </aside>
-  )
+  );
 }
 
 export default NavigationMenu;
